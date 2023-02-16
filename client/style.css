@@ -1,0 +1,109 @@
+.wrapper {
+    width: 80%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: didot, serif;
+    background-color: #239CAD;
+    color: white;
+}
+
+
+main {
+    text-align: center;
+}
+
+main h1 {
+    font-size: 24pt;
+    margin-bottom: 25px;
+    margin-top: 25px;
+
+}
+
+
+main input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#add-vacation-button {
+    padding: 16px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+#add-vacation-button:hover {
+    background-color: lightgrey;
+}
+
+#random-vacation-button {
+    padding: 16px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+#random-vacation-button:hover {
+    background-color: lightgrey;
+}
+
+section {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color: #DBDAC0;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    min-width: 70%;
+    min-height: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+    border-radius: 40px;
+
+}
+
+section div ol {
+    list-style-type: none;
+}
+
+
+
+section div ol li:nth-child(2n) div {
+    background-color: #287780;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+
+section div ol li:nth-child(2n+1) div {
+    background-color: #ABA588;
+    padding: 15px;
+    border-radius: 10px;
+    color: black;
+    margin-bottom: 10px;
+
+}
+
+section div {
+    width: 70%;
+
+}
+
+#random-div {
+    width: 70%;
+    text-align: center;
+    color: black;
+
+}
