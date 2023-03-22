@@ -26,12 +26,16 @@ main h1 {
 }
 
 
-main input[type=text] {
-    width: 30%;
+#random-div input[type=text] {
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    display: inline-block;
 }
+
+
+
 
 #add-vacation-button {
     padding: 16px 32px;
@@ -44,16 +48,29 @@ main input[type=text] {
     background-color: lightgrey;
 }
 
-#random-vacation-button {
+button {
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+
+#clear-button {
     padding: 16px 32px;
     border-radius: 12px;
     border: none;
     cursor: pointer;
 }
 
-#random-vacation-button:hover {
+#clear-button:hover {
     background-color: lightgrey;
 }
+
 
 section {
     grid-column-start: 2;
@@ -77,9 +94,11 @@ section div ol {
     list-style-type: none;
 }
 
+section div ol li div {
+    margin-bottom: 15px;
+}
 
-
-section div ol li:nth-child(2n) div {
+section div ol li:nth-child(2n) {
     background-color: #287780;
     padding: 15px;
     border-radius: 10px;
@@ -87,7 +106,7 @@ section div ol li:nth-child(2n) div {
 
 }
 
-section div ol li:nth-child(2n+1) div {
+section div ol li:nth-child(2n+1) {
     background-color: #ABA588;
     padding: 15px;
     border-radius: 10px;
@@ -99,6 +118,11 @@ section div ol li:nth-child(2n+1) div {
 section div {
     width: 70%;
 
+
+}
+
+section>div {
+    margin: 25px;
 }
 
 #random-div {
