@@ -12,7 +12,7 @@
 
 ## Schema
 
-CREATE TABLE vacations (id INTEGER PRIMARY KEY, location TEXT, activity TEXT, climate TEXT, cost TEXT, length TEXT); 
+```CREATE TABLE vacations (id INTEGER PRIMARY KEY, location TEXT, activity TEXT, climate TEXT, cost TEXT, length TEXT); ```
 
 ## REST Endpoints
 
