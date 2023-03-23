@@ -105,6 +105,9 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         parsed_body = parse_qs(request_body)
         print("parsed request body", parsed_body)
 
+        if parsed_body == {}:
+            self.handleNotFound()
+            return
         # save movie name to the "database"
         vacation_location = parsed_body["location"][
             0
