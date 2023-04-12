@@ -108,10 +108,17 @@ clearButton.onclick = function () {
 
 
 function loadVacationFromServer() {
-    fetch("http://localhost:8080/vacations").then(function (response) {
+    fetch("http://localhost:8080/vacations", { credentials: "include", }).then(function (response) {
+        console.log("response", response)
+        if (response.status != 200) {
+            showPage("login")
+            return
+        }
         response.json().then(function (data) {
             console.log("data recieved from server", data);
             myVacations = data;
+
+
 
             var myList = document.querySelector("#my-vacation-list");
             console.log("my list element:", myList);
@@ -202,6 +209,7 @@ function createVacationOnServer(vacationLocation, vacationActivity, vacationClim
     fetch("http://localhost:8080/vacations", {
         // request details
         method: "POST",
+        credentials: "include",
         body: data,
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -223,6 +231,7 @@ function createVacationOnServer(vacationLocation, vacationActivity, vacationClim
 function deleteVacationFromServer(vacationId) {
     fetch("http://localhost:8080/vacations/" + vacationId, {
         method: "DELETE",
+        credentials: "include",
     }).then(function (response) {
         if (response.status == 200) {
             loadVacationFromServer();
@@ -243,6 +252,7 @@ function updateVacationFromServer(vacationId, vacationLocation, vacationActivity
     console.log("sending data to server:", data);
     fetch("http://localhost:8080/vacations/" + vacationId, {
         method: "PUT",
+        credentials: "include",
         body: data,
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -302,3 +312,148 @@ function updateVacationFromServer(vacationId, vacationLocation, vacationActivity
 }
 
 loadVacationFromServer();
+
+// clear fields function
+//var VacationActivityInput = document.querySelector("#vacation-activity");
+//VacationActivityInput.value = "";
+
+
+
+function showPage(pageName) {
+    var regis = document.querySelector("#register-div");
+    var main = document.querySelector("#the-goods");
+    var login = document.querySelector("#login-div");
+
+    if (pageName == 'register') {
+        regis.style.display = "block";
+        login.style.display = "none";
+        main.style.display = "none";
+
+    }
+
+    if (pageName == 'login') {
+        regis.style.display = "none";
+        login.style.display = "block";
+        main.style.display = "none";
+
+    }
+
+    if (pageName == 'main') {
+        regis.style.display = "none";
+        login.style.display = "none";
+        main.style.display = "block";
+
+    }
+}
+
+
+var showRegisterButton = document.querySelector("#show-register-button");
+showRegisterButton.onclick = function () {
+    showPage("register");
+};
+
+var showRegisterButton = document.querySelector("#login-button");
+showRegisterButton.onclick = function () {
+    var emailInput = document.querySelector("#email");
+    var pwInput = document.querySelector("#pass");
+    loginOnServer(emailInput.value, pwInput.value);
+};
+
+var showRegisterButton = document.querySelector("#back-login-button");
+showRegisterButton.onclick = function () {
+    showPage("login");
+};
+///LOOK HERE FOR WORK
+var completeRegisterButton = document.querySelector("#register-button");
+completeRegisterButton.onclick = function () {
+    var fNameInput = document.querySelector("#fname");
+    console.log("my input element:", fNameInput);
+    console.log("input element text:", fNameInput.value);
+    var lNameInput = document.querySelector("#lname");
+    var emailInput = document.querySelector("#email-reg");
+    console.log("email", emailInput.value)
+    var pwInput = document.querySelector("#pass-reg");
+    console.log("email", pwInput.value)
+    createUserOnServer(fNameInput.value, lNameInput.value, emailInput.value, pwInput.value);
+};
+
+
+
+function createUserOnServer(fname, lname, email, pw) {
+    console.log("attempting to create user");
+
+    var data = "fname=" + encodeURIComponent(fname);
+    data += "&lname=" + encodeURIComponent(lname);
+    data += "&email=" + encodeURIComponent(email);
+    data += "&pass=" + encodeURIComponent(pw);
+
+    console.log("sending data to server:", data);
+
+
+    fetch("http://localhost:8080/users", {
+        // request details
+        method: "POST",
+        credentials: "include",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+
+    }).then(function (response) {
+        // when the server responds
+
+        if (response.status == 201) {
+            var myP = document.querySelector("#user-message");
+            myP.innerHTML = "Success!";
+            setTimeout(() => { showPage("login") }, 3000);
+
+        }
+        else if (response.status == 422) {
+            var myP = document.querySelector("#user-message");
+            myP.innerHTML = "User already registered.";
+            console.log("server responded with", response.status)
+        }
+        else {
+            var myP = document.querySelector("#user-message");
+            myP.innerHTML = "Issue with email or password. Try again.";
+            console.log("server responded with", response.status)
+        }
+
+
+    });
+}
+
+function loginOnServer(email, pw) {
+    console.log("attempting to login");
+
+    var data = "email=" + encodeURIComponent(email);
+    data += "&pass=" + encodeURIComponent(pw);
+
+
+
+    fetch("http://localhost:8080/sessions", {
+        // request details
+        method: "POST",
+        credentials: "include",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+
+    }).then(function (response) {
+        // when the server responds
+
+        if (response.status == 201) {
+            showPage("main");
+            loadVacationFromServer();
+
+        } else {
+            var myP = document.querySelector("#user-message-log");
+            myP.innerHTML = "Issue with email or password. Try again.";
+            console.log("server responded with", response.status)
+            console.log("server responded with", response.status)
+        }
+
+
+    });
+}

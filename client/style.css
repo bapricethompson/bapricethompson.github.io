@@ -18,12 +18,23 @@ main {
     text-align: center;
 }
 
+#login-div {
+    display: none;
+    text-align: center;
+}
+
+#register-div {
+    display: none;
+    text-align: center;
+}
+
 main h1 {
     font-size: 24pt;
     margin-bottom: 25px;
     margin-top: 25px;
 
 }
+
 
 
 #random-div input[type=text] {
@@ -33,6 +44,63 @@ main h1 {
     box-sizing: border-box;
     display: inline-block;
 }
+
+#login-div input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#login-div input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#login-div input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#register-div input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#register-div input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#register-div input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.login-register-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
 
 
 
@@ -119,6 +187,7 @@ section div {
     width: 70%;
 
 
+
 }
 
 section>div {
@@ -129,5 +198,20 @@ section>div {
     width: 70%;
     text-align: center;
     color: black;
+
+}
+
+#login-div {
+    width: 70%;
+    text-align: center;
+    color: white;
+
+}
+
+#register-div {
+    display: none;
+    width: 70%;
+    text-align: center;
+    color: white;
 
 }

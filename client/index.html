@@ -6,32 +6,56 @@
 </head>
 
 <body>
+
     <div class="wrapper">
-        <main>
-            <h1 id="my-heading"> My Vacations</h1>
-
-            <!--button id="random-vacation-button">Pick A Vacation</button -->
-        </main>
-        <section>
-            <div>
-                <ol id="my-vacation-list">
-
-                </ol>
-
+        <div class="login-register-div">
+            <div id="login-div">
+                <h1>Login:</h1>
+                <input type="email" id="email" placeholder="enter email" required>
+                <input type="password" id="pass" placeholder="enter password" required>
+                <p id="user-message-log"></p>
+                <button id="login-button">Login</button>
+                <button id="show-register-button">Register</button>
 
             </div>
-            <div id="random-div">
-                <h1>Make a New Vacation:</h1>
-                <input type="text" id="vacation-location" placeholder="enter vacation location">
-                <input type="text" id="vacation-activity" placeholder="enter vacation activity">
-                <input type="text" id="vacation-climate" placeholder="enter vacation climate">
-                <input type="text" id="vacation-cost" placeholder="enter vacation cost">
-                <input type="text" id="vacation-length" placeholder="enter vacation length">
-                <button id="add-vacation-button">Add Vacation</button>
-                <button id="clear-button">Clear</button>
-                <!--span id="random-vacation-name"></span>-->
+            <div id="register-div">
+                <h1>Make a New Account:</h1>
+                <input type="text" id="fname" placeholder="enter firstname" required>
+                <input type="text" id="lname" placeholder="enter last name" required>
+                <input type="email" id="email-reg" placeholder="enter email" required>
+                <input type="password" id="pass-reg" placeholder="enter password" required>
+                <p id="user-message"></p>
+                <button id="back-login-button">Go to Login</button>
+                <button id="register-button">Register</button>
+
             </div>
-        </section>
+        </div>
+        <div id="the-goods">
+            <main>
+                <h1 id="my-heading"> My Vacations</h1>
+                <!--button id="random-vacation-button">Pick A Vacation</button -->
+            </main>
+            <section>
+                <div>
+                    <ol id="my-vacation-list">
+
+                    </ol>
+
+
+                </div>
+                <div id="random-div">
+                    <h1>Make a New Vacation:</h1>
+                    <input type="text" id="vacation-location" placeholder="enter vacation location">
+                    <input type="text" id="vacation-activity" placeholder="enter vacation activity">
+                    <input type="text" id="vacation-climate" placeholder="enter vacation climate">
+                    <input type="text" id="vacation-cost" placeholder="enter vacation cost">
+                    <input type="text" id="vacation-length" placeholder="enter vacation length">
+                    <button id="add-vacation-button">Add Vacation</button>
+                    <button id="clear-button">Clear</button>
+                    <!--span id="random-vacation-name"></span>-->
+                </div>
+            </section>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
