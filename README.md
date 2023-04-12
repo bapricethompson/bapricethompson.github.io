@@ -9,10 +9,20 @@
 <li> cost (string)
 <li> length (string)
 </ul>
+<p> User</p>
+<p> Attributes:</p>
+<ul> 
+<li> fname (string)
+<li> lname (string)
+<li> email (string)
+<li> pass (string)
+</ul>
 
 ## Schema
 
 ```CREATE TABLE vacations (id INTEGER PRIMARY KEY, location TEXT, activity TEXT, climate TEXT, cost TEXT, length TEXT); ```
+***
+```CREATE TABLE users (id INTEGER PRIMARY KEY, fname TEXT, lname TEXT, email TEXT, pass TEXT);```
 
 ## REST Endpoints
 
@@ -47,4 +57,24 @@
     <td>DELETE</td>
     <td>/vacations/{id}</td>
   </tr>
+    <tr>
+    <td>Retrieve user collection</td>
+    <td>GET</td>
+    <td>/users</td>
+  </tr>
+  <tr>
+    <td>Retrieve user member</td>
+    <td>GET</td>
+    <td>/users/{id}</td>
+  </tr>
+    <tr>
+    <td>Create user member</td>
+    <td>POST</td>
+    <td>/users</td>
+  </tr>
+    <tr>
+    <td>Create session member</td>
+    <td>POST</td>
+    <td>/sessions</td>
+
 </table>
