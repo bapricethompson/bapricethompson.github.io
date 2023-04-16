@@ -96,16 +96,16 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         self.send_response(401)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
-        self.wfile.write(bytes("Not found", "utf-8"))
+        self.wfile.write(bytes("Not authorized", "utf-8"))
 
     def handleGetVacationsCollection(self):
         if "userId" not in self.sessionData:
             self.handleNotAuthorized()
             return
-        if "test" not in self.sessionData:
-            self.sessionData["test"] = 1
-        else:
-            self.sessionData["test"] += 1
+        # if "test" not in self.sessionData:
+        #     self.sessionData["test"] = 1
+        # else:
+        #     self.sessionData["test"] += 1
 
         print("current session data:", self.sessionData)
 
@@ -155,17 +155,17 @@ class MyRequestHandler(BaseHTTPRequestHandler):
             # )
             self.end_headers()
 
-    def handleGetUsersCollection(self):
-        db = UsersDB()
-        allUsers = db.getAllUsers()
-        # response status code:
-        self.send_response(200)
-        # repsonse header:
-        self.send_header("Content-Type", "application/json")
-        # self.send_header("Access-Control-Allow-Origin", self.headers["Origin"])
-        self.end_headers()
-        # response body
-        self.wfile.write(bytes(json.dumps(allUsers), "utf-8"))
+    # def handleGetUsersCollection(self):
+    #     db = UsersDB()
+    #     allUsers = db.getAllUsers()
+    #     # response status code:
+    #     self.send_response(200)
+    #     # repsonse header:
+    #     self.send_header("Content-Type", "application/json")
+    #     # self.send_header("Access-Control-Allow-Origin", self.headers["Origin"])
+    #     self.end_headers()
+    #     # response body
+    #     self.wfile.write(bytes(json.dumps(allUsers), "utf-8"))
 
     def handleGetVacationsMember(self, vacation_id):
         if "userId" not in self.sessionData:
@@ -189,23 +189,23 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         else:
             self.handleNotFound()
 
-    def handleGetUsersMember(self, user_id):
-        db = UsersDB()
-        oneUser = db.getOneUser(user_id)
+    # def handleGetUsersMember(self, user_id):
+    #     db = UsersDB()
+    #     oneUser = db.getOneUser(user_id)
 
-        if oneUser != None:
-            # response status code:
-            self.send_response(200)
-            # repsonse header:
-            self.send_header("Content-Type", "application/json")
-            # self.send_header(
-            #   "Access-Control-Allow-Origin", self.headers["Origin"]
-            # )
-            self.end_headers()
-            # response body
-            self.wfile.write(bytes(json.dumps(oneUser), "utf-8"))
-        else:
-            self.handleNotFound()
+    #     if oneUser != None:
+    #         # response status code:
+    #         self.send_response(200)
+    #         # repsonse header:
+    #         self.send_header("Content-Type", "application/json")
+    #         # self.send_header(
+    #         #   "Access-Control-Allow-Origin", self.headers["Origin"]
+    #         # )
+    #         self.end_headers()
+    #         # response body
+    #         self.wfile.write(bytes(json.dumps(oneUser), "utf-8"))
+    #     else:
+    #         self.handleNotFound()
 
     def handleDeleteVacationMember(self, vacation_id):
         if "userId" not in self.sessionData:
@@ -228,23 +228,23 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         else:
             self.handleNotFound()
 
-    def handleDeleteUserMember(self, user_id):
-        db = UsersDB()
-        oneUser = db.deleteOneUser(user_id)
+    # def handleDeleteUserMember(self, user_id):
+    #     db = UsersDB()
+    #     oneUser = db.deleteOneUser(user_id)
 
-        if oneUser == True:
-            # response status code:
-            self.send_response(200)
-            # repsonse header:
-            self.send_header("Content-Type", "application/json")
-            # self.send_header(
-            #    "Access-Control-Allow-Origin", self.headers["Origin"]
-            # )
-            self.end_headers()
-            # response body
-            self.wfile.write(bytes("Deleted", "utf-8"))
-        else:
-            self.handleNotFound()
+    #     if oneUser == True:
+    #         # response status code:
+    #         self.send_response(200)
+    #         # repsonse header:
+    #         self.send_header("Content-Type", "application/json")
+    #         # self.send_header(
+    #         #    "Access-Control-Allow-Origin", self.headers["Origin"]
+    #         # )
+    #         self.end_headers()
+    #         # response body
+    #         self.wfile.write(bytes("Deleted", "utf-8"))
+    #     else:
+    #         self.handleNotFound()
 
     def handleCreateVacation(self):
         if "userId" not in self.sessionData:
@@ -422,7 +422,7 @@ class MyRequestHandler(BaseHTTPRequestHandler):
                 self.handleDeleteVacationMember(member_id)
             else:
                 self.handleNotFound()  # since this is delete/update we do 404 error
-        if collection_name == "users":
+        elif collection_name == "users":
             if member_id:
                 self.handleDeleteUserMember(member_id)
             else:
@@ -445,11 +445,11 @@ class MyRequestHandler(BaseHTTPRequestHandler):
                 self.handleGetVacationsMember(member_id)
             else:
                 self.handleGetVacationsCollection()  # if this was delete/update we would do 404 error
-        elif collection_name == "users":
-            if member_id:
-                self.handleGetUsersMember(member_id)
-            else:
-                self.handleGetUsersCollection()
+        # elif collection_name == "users":
+        #     if member_id:
+        #         self.handleGetUsersMember(member_id)
+        #     else:
+        #         self.handleGetUsersCollection()
         else:
             self.handleNotFound()
 
@@ -480,7 +480,7 @@ class MyRequestHandler(BaseHTTPRequestHandler):
                 self.handleUpdateVacationMember(member_id)
             else:
                 self.handleNotFound()  # since this is delete/update we  do 404 error
-        if collection_name == "users":
+        elif collection_name == "users":
             if member_id:
                 self.handleUpdateUserMember(member_id)
             else:

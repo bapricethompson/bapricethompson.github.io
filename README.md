@@ -56,17 +56,6 @@
     <td>Delete vacation member</td>
     <td>DELETE</td>
     <td>/vacations/{id}</td>
-  </tr>
-    <tr>
-    <td>Retrieve user collection</td>
-    <td>GET</td>
-    <td>/users</td>
-  </tr>
-  <tr>
-    <td>Retrieve user member</td>
-    <td>GET</td>
-    <td>/users/{id}</td>
-  </tr>
     <tr>
     <td>Create user member</td>
     <td>POST</td>
@@ -78,3 +67,8 @@
     <td>/sessions</td>
 
 </table>
+
+## Password Hashing
+<p>I implemented password hashing using bcrpyt with default settings.</p>
+
+``` hash= bcrpyt.hash(password)```
