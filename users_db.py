@@ -30,7 +30,7 @@ class UsersDB:
             cursor_factory=psycopg2.extras.RealDictCursor,
             database=url.path[1:],
             user=url.username,
-            passowrd=url.password,
+            password=url.password,
             host=url.hostname,
             port=url.port,
         )

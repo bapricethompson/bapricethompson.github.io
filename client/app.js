@@ -108,7 +108,7 @@ clearButton.onclick = function () {
 
 
 function loadVacationFromServer() {
-    fetch("http://localhost:8080/vacations", { credentials: "include", }).then(function (response) {
+    fetch("https://s23-deploy-bapricethompson-production.up.railway.app/vacations", { credentials: "include", }).then(function (response) {
         console.log("response", response)
         if (response.status != 200) {
             showPage("login")
@@ -206,7 +206,7 @@ function createVacationOnServer(vacationLocation, vacationActivity, vacationClim
     console.log("sending data to server:", data);
 
 
-    fetch("http://localhost:8080/vacations", {
+    fetch("https://s23-deploy-bapricethompson-production.up.railway.app/vacations", {
         // request details
         method: "POST",
         credentials: "include",
@@ -229,7 +229,7 @@ function createVacationOnServer(vacationLocation, vacationActivity, vacationClim
 }
 
 function deleteVacationFromServer(vacationId) {
-    fetch("http://localhost:8080/vacations/" + vacationId, {
+    fetch("https://s23-deploy-bapricethompson-production.up.railway.app/vacations/" + vacationId, {
         method: "DELETE",
         credentials: "include",
     }).then(function (response) {
@@ -250,7 +250,7 @@ function updateVacationFromServer(vacationId, vacationLocation, vacationActivity
     data += "&cost=" + encodeURIComponent(vacationCost);
     data += "&length=" + encodeURIComponent(vacationLength);
     console.log("sending data to server:", data);
-    fetch("http://localhost:8080/vacations/" + vacationId, {
+    fetch("https://s23-deploy-bapricethompson-production.up.railway.app/vacations/" + vacationId, {
         method: "PUT",
         credentials: "include",
         body: data,
@@ -390,7 +390,7 @@ function createUserOnServer(fname, lname, email, pw) {
     console.log("sending data to server:", data);
 
 
-    fetch("http://localhost:8080/users", {
+    fetch("https://s23-deploy-bapricethompson-production.up.railway.app/users", {
         // request details
         method: "POST",
         credentials: "include",
@@ -431,7 +431,7 @@ function loginOnServer(email, pw) {
 
 
 
-    fetch("http://localhost:8080/sessions", {
+    fetch("https://s23-deploy-bapricethompson-production.up.railway.app/sessions", {
         // request details
         method: "POST",
         credentials: "include",
