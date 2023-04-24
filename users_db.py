@@ -45,7 +45,7 @@ class UsersDB:
         # INSERT record
         data = [email]  # always has to be an array/list
 
-        self.cursor.execute("SELECT * FROM users WHERE email== %s", data)
+        self.cursor.execute("SELECT * FROM users WHERE email= %s", data)
         record = self.cursor.fetchone()
         if record:
             return False
