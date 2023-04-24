@@ -50,7 +50,7 @@ class VacationsDB:
 
     def createVacationsTable(self):
         self.cursor.execute(
-            "CREATE TABLE IF NOT EXISTS vacations (id SERIAL PRIMARY KEY, , location TEXT, activity TEXT, climate TEXT, cost TEXT, length TEXT)"
+            "CREATE TABLE IF NOT EXISTS vacations (id SERIAL PRIMARY KEY, location TEXT, activity TEXT, climate TEXT, cost TEXT, length TEXT)"
         )
 
         self.connection.commit()
